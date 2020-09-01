@@ -24,6 +24,9 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
+    bodyAttrs: {
+      class: 'bg-blue-100 font-mono',
+    },
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   /*
@@ -46,6 +49,7 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
+    '@nuxtjs/tailwindcss',
   ],
   /*
    ** Nuxt.js modules
