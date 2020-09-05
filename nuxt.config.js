@@ -27,7 +27,9 @@ export default {
     bodyAttrs: {
       class: 'bg-blue-100 font-mono',
     },
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/fuku710.info/favicon.ico' },
+    ],
   },
   /*
    ** Global CSS
@@ -60,4 +62,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  router: {
+    base: '/fuku710.info',
+  },
 }
