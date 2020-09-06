@@ -1,12 +1,20 @@
 name: Create Pull Request
 
 on:
-  - push
+  create:
+    branches:
+      - 'feature/**'
 
 jobs:
   create-pull-request:
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
+
+      - name: Get branch name
+        id: get-branch-name
+        run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
+
       - name: Get issue number from branch name
         id: get-issue-number
         run: echo "::set-output name=number::$(echo ${GITHUB_REF#refs/heads/feature/})"
@@ -16,8 +24,20 @@ jobs:
         run: |
           curl https://api.github.com/repos/${{ github.repository }}/issues/${{ steps.get-issue-number.outputs.number }} \
           -H 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          | jq '.title' \
+          | jq -r '.title' \
           | echo "::set-output name=title::$(cat)"
 
       - name: Create Pull Request
-        run: echo "${{ steps.get-issue-title.outputs.title }}"
+        uses: actions/github-script@v3
+        if: steps.get-issue-title.outputs.title != null
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN}}
+          script: |
+            github.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '#${{ steps.get-issue-number.outputs.number }} ${{ steps.get-issue-title.outputs.title }}',
+              head: '${{ steps.get-branch-name.outputs.branch }}',
+              base: 'master',
+              body: 'close #${{ steps.get-issue-number.outputs.number}}'
+            })
