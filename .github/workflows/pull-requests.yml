@@ -7,8 +7,11 @@ jobs:
   create-pull-request:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - name: Get issue number from branch name
+        id: get-issue-number
+        run: echo "::set-output name=issue-number::${{ github.ref }}"
 
       - name: Get issues
         run: |
-          curl https://api.github.com/repos/${{ github.repository }}/issues
+          curl https://api.github.com/repos/${{ github.repository }}/issues/${{ steps.get-issue-number.issue-number }} \
+          -H 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
