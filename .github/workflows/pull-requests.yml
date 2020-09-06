@@ -1,0 +1,14 @@
+name: Create Pull Request
+
+on:
+  - push
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get issues
+        run: |
+          curl https://api.github.com/repos/${{ github.repository }}/issues
