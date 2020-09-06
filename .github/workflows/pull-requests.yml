@@ -22,4 +22,7 @@ jobs:
           | echo "::set-output name=title::$(cat)"
 
       - name: Create Pull Request
-        run: echo "#${{ steps.get-issue-number.outputs.number}} ${{ steps.get-issue-title.outputs.title }}"
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: '#${{ steps.get-issue-number.outputs.number}} ${{ steps.get-issue-title.outputs.title }}'
+          body: 'close #${{ steps.get-issue-number.outputs.number}}'
