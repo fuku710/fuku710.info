@@ -1,7 +1,9 @@
 name: Create Pull Request
 
 on:
-  - push
+  push:
+    branches:
+      - 'feature/**'
 
 jobs:
   create-pull-request:
