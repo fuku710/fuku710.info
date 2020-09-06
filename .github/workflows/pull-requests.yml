@@ -31,6 +31,6 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         if: steps.get-issue-title.outputs.title != null
         with:
-          branch: steps.get-branch-name.outputs.branch
+          branch: ${{ steps.get-branch-name.outputs.branch }}
           title: '#${{ steps.get-issue-number.outputs.number }} ${{ steps.get-issue-title.outputs.title }}'
           body: 'close #${{ steps.get-issue-number.outputs.number}}'
