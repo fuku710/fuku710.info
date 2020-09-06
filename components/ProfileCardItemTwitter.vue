@@ -1,6 +1,7 @@
 <template>
-  <div class="w-1/6 p-2 rounded shadow bg-white">
-    <span>Twitter:</span>
+  <div class="flex flex-row">
+    <div class="w-20">Twitter</div>
+    <span>:</span>
     <a class="underline text-blue-500 hover:text-blue-800" :href="twitterUrl">
       @{{ screenName }}
     </a>

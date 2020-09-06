@@ -25,7 +25,7 @@ export default {
       },
     ],
     bodyAttrs: {
-      class: 'bg-blue-100 font-mono',
+      class: 'bg-blue-200 font-mono',
     },
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },

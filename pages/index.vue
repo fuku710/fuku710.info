@@ -1,13 +1,23 @@
 <template>
   <div class="flex flex-col items-center">
     <Header class="m-1" title="fuku710" />
-    <ProfileIcon />
-    <ProfileName class="m-1" name="Fukuda Naoto" />
-    <ProfileAccountTwitter class="m-1" screen-name="fuku_710" />
-    <ProfileAccountGitHub class="m-1" user-name="fuku710" />
+    <ProfileCard :image-url="imageUrl">
+      <ProfileCardItem label="Name" :value="name" />
+      <ProfileCardItemTwitter :screen-name="twitterScreenName" />
+      <ProfileCardItemGitHub :user-name="githubUserName" />
+    </ProfileCard>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      imageUrl: 'https://avatars2.githubusercontent.com/u/13159978?v=4',
+      name: 'Fukuda Naoto',
+      twitterScreenName: 'fuku_710',
+      githubUserName: 'fuku710',
+    }
+  },
+}
 </script>
