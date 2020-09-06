@@ -9,9 +9,15 @@ jobs:
     steps:
       - name: Get issue number from branch name
         id: get-issue-number
-        run: echo "::set-output name=number::$(echo ${GITHUB_REF#refs/heads})"
+        run: echo "::set-output name=number::$(echo ${GITHUB_REF#refs/heads/feature/})"
 
-      - name: Get issues
+      - name: Get issue title
+        id: get-issue-title
         run: |
           curl https://api.github.com/repos/${{ github.repository }}/issues/${{ steps.get-issue-number.outputs.number }} \
-          -H 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
+          -H 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          | jq '.title' \
+          | echo "::set-output name=title::$(cat)"
+
+      - name: Create Pull Request
+        run: echo "${{ steps.get-issue-title.outputs.title }}"
