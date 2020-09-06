@@ -1,7 +1,7 @@
 name: Create Pull Request
 
 on:
-  push:
+  create:
     branches:
       - 'feature/**'
 
