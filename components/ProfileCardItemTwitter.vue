@@ -1,10 +1,12 @@
 <template>
   <div class="flex flex-row">
-    <div class="w-20">Twitter</div>
+    <div class="pr-1">Twitter</div>
     <span>:</span>
-    <a class="underline text-blue-500 hover:text-blue-800" :href="twitterUrl">
-      @{{ screenName }}
-    </a>
+    <div class="pl-1">
+      <a class="underline text-blue-500 hover:text-blue-800" :href="twitterUrl">
+        @{{ screenName }}
+      </a>
+    </div>
   </div>
 </template>
 <script>

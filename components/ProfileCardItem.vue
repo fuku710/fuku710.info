@@ -1,15 +1,18 @@
 <template>
   <div class="flex flex-row">
-    <div class="w-20">{{ label }}</div>
+    <div class="pr-1">{{ label }}</div>
     <span>:</span>
-    <a
-      v-if="valueLinkUrl"
-      class="underline text-blue-500 hover:text-blue-800"
-      :href="valueLinkUrl"
-    >
-      {{ value }}
-    </a>
-    <span v-else>{{ value }}</span>
+    <div v-if="valueLinkUrl" class="pl-1">
+      <a
+        class="underline text-blue-500 hover:text-blue-800"
+        :href="valueLinkUrl"
+      >
+        {{ value }}
+      </a>
+    </div>
+    <div v-else class="pl-1">
+      <span>{{ value }}</span>
+    </div>
   </div>
 </template>
 <script>

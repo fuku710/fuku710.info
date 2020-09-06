@@ -25,9 +25,16 @@ export default {
       },
     ],
     bodyAttrs: {
-      class: 'bg-blue-200 font-mono',
+      class: 'bg-blue-200 text-gray-800 font-noto-sans',
     },
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap',
+      },
+    ],
   },
   /*
    ** Global CSS

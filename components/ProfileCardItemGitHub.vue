@@ -1,10 +1,12 @@
 <template>
   <div class="flex flex-row">
-    <div class="w-20">GitHub</div>
+    <div class="pr-1">GitHub</div>
     <span>:</span>
-    <a class="underline text-blue-500 hover:text-blue-800" :href="githubUrl">
-      {{ userName }}
-    </a>
+    <div class="pl-1">
+      <a class="underline text-blue-500 hover:text-blue-800" :href="githubUrl">
+        {{ userName }}
+      </a>
+    </div>
   </div>
 </template>
 <script>
